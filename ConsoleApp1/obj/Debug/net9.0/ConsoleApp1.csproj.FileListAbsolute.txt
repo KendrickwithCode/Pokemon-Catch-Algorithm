@@ -1,0 +1,14 @@
+/Users/jkendrick/Desktop/Github/C#/ConsoleApp1/bin/Debug/net9.0/ConsoleApp1
+/Users/jkendrick/Desktop/Github/C#/ConsoleApp1/bin/Debug/net9.0/ConsoleApp1.deps.json
+/Users/jkendrick/Desktop/Github/C#/ConsoleApp1/bin/Debug/net9.0/ConsoleApp1.runtimeconfig.json
+/Users/jkendrick/Desktop/Github/C#/ConsoleApp1/bin/Debug/net9.0/ConsoleApp1.dll
+/Users/jkendrick/Desktop/Github/C#/ConsoleApp1/bin/Debug/net9.0/ConsoleApp1.pdb
+/Users/jkendrick/Desktop/Github/C#/ConsoleApp1/obj/Debug/net9.0/ConsoleApp1.GeneratedMSBuildEditorConfig.editorconfig
+/Users/jkendrick/Desktop/Github/C#/ConsoleApp1/obj/Debug/net9.0/ConsoleApp1.AssemblyInfoInputs.cache
+/Users/jkendrick/Desktop/Github/C#/ConsoleApp1/obj/Debug/net9.0/ConsoleApp1.AssemblyInfo.cs
+/Users/jkendrick/Desktop/Github/C#/ConsoleApp1/obj/Debug/net9.0/ConsoleApp1.csproj.CoreCompileInputs.cache
+/Users/jkendrick/Desktop/Github/C#/ConsoleApp1/obj/Debug/net9.0/ConsoleApp1.dll
+/Users/jkendrick/Desktop/Github/C#/ConsoleApp1/obj/Debug/net9.0/refint/ConsoleApp1.dll
+/Users/jkendrick/Desktop/Github/C#/ConsoleApp1/obj/Debug/net9.0/ConsoleApp1.pdb
+/Users/jkendrick/Desktop/Github/C#/ConsoleApp1/obj/Debug/net9.0/ConsoleApp1.genruntimeconfig.cache
+/Users/jkendrick/Desktop/Github/C#/ConsoleApp1/obj/Debug/net9.0/ref/ConsoleApp1.dll
