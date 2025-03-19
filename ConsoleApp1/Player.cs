@@ -23,13 +23,13 @@ namespace ConsoleApp1
             Ball = "Normal";
         }
 
-        public void Catch(Pals pal)
+        public void Catch(Pokemon pal)
         {
             Random rand = new Random(Seed);
             Console.WriteLine("Pokeball thrown");
             System.Threading.Thread.Sleep(1000);
             int R1 = rand.Next(256);
-            int Rstar = R1 - pal.Status;
+            int Rstar = R1 - pal.Status.Number;
             //If Pokeball, 0 to 255. Great = 200, Ultra = 150 inclusive.
             if (Rstar < 0)
             {
@@ -79,11 +79,11 @@ namespace ConsoleApp1
                 }
                 W *= F;
                 W /= 255;
-                if (pal.Status == 25)
+                if (pal.Status.Number == 25)
                 {
                     W += 10;
                 }
-                else if (pal.Status == 12)
+                else if (pal.Status.Number == 12)
                 {
                     W += 5;
                 }
