@@ -9,14 +9,21 @@ namespace ConsoleApp1
         {
             Player player = new Player("Jason");
             Pals pals = new Pals();
+            List<Pals> currentPals = pals.GeneratePals(5);
             while(true)
             {
-                pals.GeneratePals(5);
-                Console.WriteLine("Catch a Pokemon. Press 1");
-                var result = Console.ReadLine();
-                if (result == "1")
+                foreach (var pokemon in currentPals)
                 {
-                    player.Catch();
+                    Console.WriteLine(pokemon.DisplayDetails());
+                }
+                Console.WriteLine("Catch a Pokemon.");
+                var result = Convert.ToInt32(Console.ReadLine());
+                foreach (var pal in currentPals)
+                {
+                    if (pal.ID == result)
+                    {   
+                        player.Catch(pal);
+                    }
                 }
             }
         }

@@ -8,16 +8,19 @@ namespace ConsoleApp1
         {
 
         }
-        public Pals(string _name, int _hp, int _status)
+        public Pals(int _id, string _name, int _hp, int _status)
         {
+            ID = _id;
             Name = _name;
             Hitpoints = _hp;
             Status = _status;
         }
 
+        public int ID {get; set;}
         public string Name { get; set; } = "";
-        int Hitpoints { get; set; } = 0;
-        int Status { get; set; } = 0;
+        public int Hitpoints { get; set; } = 0;
+        public int Status { get; set; } = 0;
+        public int CaptureRate {get; set;}
         public int Seed
         {
             get
@@ -28,7 +31,7 @@ namespace ConsoleApp1
 
         public string DisplayDetails()
         {
-            return $"Name: {Name}, HP: {Hitpoints}, Status: {Status}";
+            return $"{ID}. Name: {Name}, HP: {Hitpoints}, Status: {Status}";
         }
 
         public List<Pals> GeneratePals(int count)
@@ -37,6 +40,8 @@ namespace ConsoleApp1
             for (int i = 0; i < count; i++)
             {
                 Random rand = new Random(Seed);
+
+                CaptureRate = rand.Next(0, 256);
 
                 //Name generator
                 int namelength = rand.Next(0, 26);
@@ -51,11 +56,10 @@ namespace ConsoleApp1
                 }
 
                 int hp = rand.Next(0, 715); //Maximum hitpoints is 714.
-                var statusNumbers = new[] { 25, 12 }; //25 for Frozen/Asleep, 12 for Burned/Paralyzed.
+                var statusNumbers = new[] { 0, 25, 12 }; //25 for Frozen/Asleep, 12 for Burned/Paralyzed.
                 int status = statusNumbers[rand.Next(statusNumbers.Length)];
-                Pals pal = new Pals(name, hp, status);
-                Console.WriteLine(pal.DisplayDetails());
-                palList.Append(pal);
+                Pals pal = new Pals(i + 1, name, hp, status);
+                palList.Add(pal);
             }
             return palList;
         }
