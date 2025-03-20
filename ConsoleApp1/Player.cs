@@ -8,7 +8,7 @@ namespace ConsoleApp1
     {
         public string Name { get; set; }
 
-        public string Ball {get; set;}
+        public Pokeball Ball {get; set;} = new Pokeball();
 
         public int Seed
         {
@@ -20,11 +20,12 @@ namespace ConsoleApp1
         public Player(string _name)
         {
             Name = _name;
-            Ball = "Normal";
         }
 
-        public void Catch(Pokemon pal)
+        public void Catch(Pokemon pal, Pokeball ball)
         {
+            Console.Clear();
+            Ball = ball;
             Random rand = new Random(Seed);
             Console.WriteLine("Pokeball thrown");
             System.Threading.Thread.Sleep(1000);
@@ -33,13 +34,14 @@ namespace ConsoleApp1
             //If Pokeball, 0 to 255. Great = 200, Ultra = 150 inclusive.
             if (Rstar < 0)
             {
+                Wobbles(3);
                 Console.WriteLine("Caught!");
                 return;
             }
             else
             {
                 int F = pal.Hitpoints * 255; //HP Factor
-                if (Ball.Equals("Great"))
+                if (Ball.Name.Equals("Greatball"))
                 {
                     F /= 8;
                 }
@@ -66,15 +68,16 @@ namespace ConsoleApp1
                 int R2 = rand.Next(256);
                 if (R2 <= F)
                 {
+                    Wobbles(3);
                     Console.WriteLine("Caught!");
                     return;
                 }
                 //If we get here, the capture fails. Determine the appropriate amount of Wobbles.
                 int W = baseCaptureRate * 100;
-                switch (Ball)
+                switch (Ball.Name)
                 {
-                    case "Great": W /= 200; break;
-                    case "Ultra": W /= 150; break;
+                    case "Greatball": W /= 200; break;
+                    case "Ultraball": W /= 150; break;
                     default: W /= 255; break;
                 }
                 W *= F;
@@ -91,27 +94,38 @@ namespace ConsoleApp1
                 if (W < 10)
                 {
                     Console.WriteLine("The Ball missed!");
+                    return;
                 }
                 Console.WriteLine("1");
                 System.Threading.Thread.Sleep(1000);
                 if (W >= 10 && W <= 29)
                 {
                     Console.WriteLine("Broke Free!");
+                    return;
                 }
                 Console.WriteLine("2");
                 System.Threading.Thread.Sleep(1000);
                 if (W >= 30 && W <= 69)
                 {
                     Console.WriteLine("Broke Free!!");
+                    return;
                 }
                 Console.WriteLine("3");
                 System.Threading.Thread.Sleep(1000);
                 if (W >= 70)
                 {
                     Console.WriteLine("Broke Free!!!");
+                    return;
                 }
-                
+            }
+        }
 
+        public void Wobbles(int count)
+        {
+            for(int i = 1; i < count; i++)
+            {
+                    Console.WriteLine(i);
+                    System.Threading.Thread.Sleep(1000);
             }
         }
     }
