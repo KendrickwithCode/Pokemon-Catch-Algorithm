@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO.IsolatedStorage;
 using Microsoft.VisualBasic;
 
 namespace ConsoleApp1
@@ -7,6 +8,8 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
+            PokeStorage storage = new PokeStorage("pokestorage.db");
+            storage.CreateStorage();
             Player player = new Player("Jason");
             Pokemon Pokemon = new Pokemon();
             Pokeball Ball = new Pokeball();
@@ -33,11 +36,21 @@ namespace ConsoleApp1
                 Ball.Number = BallResult;
 
                 //Catching
-                foreach (var pal in currentPokemon)
+                var listCopy = currentPokemon.ToList();
+                foreach (var pal in listCopy)
                 {
                     if (pal.ID == PokemonResult)
                     {   
-                        player.Catch(pal, Ball);
+                        var caught = player.Catch(pal, Ball);
+                        if (caught)
+                        {
+                            //Save in DB and Remove from the list.
+                            storage.SavePokemon(pal);
+                            currentPokemon.Remove(pal);
+
+                            //Generate a replacement Pokemon.
+                            currentPokemon.Add(Pokemon.Generate(pal.ID));
+                        }
                     }
                 }
             }

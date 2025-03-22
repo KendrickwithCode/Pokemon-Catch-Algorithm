@@ -22,7 +22,7 @@ namespace ConsoleApp1
             Name = _name;
         }
 
-        public void Catch(Pokemon pal, Pokeball ball)
+        public bool Catch(Pokemon pal, Pokeball ball)
         {
             Console.Clear();
             Ball = ball;
@@ -31,12 +31,11 @@ namespace ConsoleApp1
             System.Threading.Thread.Sleep(1000);
             int R1 = rand.Next(256);
             int Rstar = R1 - pal.Status.Number;
-            //If Pokeball, 0 to 255. Great = 200, Ultra = 150 inclusive.
             if (Rstar < 0)
             {
                 Wobbles(3);
                 Console.WriteLine("Caught!");
-                return;
+                return true;
             }
             else
             {
@@ -63,14 +62,14 @@ namespace ConsoleApp1
                 if (baseCaptureRate < Rstar)
                 {
                     Console.WriteLine("Broke free.");
-                    return;
+                    return false;
                 }
                 int R2 = rand.Next(256);
                 if (R2 <= F)
                 {
                     Wobbles(3);
                     Console.WriteLine("Caught!");
-                    return;
+                    return true;
                 }
                 //If we get here, the capture fails. Determine the appropriate amount of Wobbles.
                 int W = baseCaptureRate * 100;
@@ -94,30 +93,31 @@ namespace ConsoleApp1
                 if (W < 10)
                 {
                     Console.WriteLine("The Ball missed!");
-                    return;
+                    return false;
                 }
                 Console.WriteLine("1");
                 System.Threading.Thread.Sleep(1000);
                 if (W >= 10 && W <= 29)
                 {
                     Console.WriteLine("Broke Free!");
-                    return;
+                    return false;
                 }
                 Console.WriteLine("2");
                 System.Threading.Thread.Sleep(1000);
                 if (W >= 30 && W <= 69)
                 {
                     Console.WriteLine("Broke Free!!");
-                    return;
+                    return false;
                 }
                 Console.WriteLine("3");
                 System.Threading.Thread.Sleep(1000);
                 if (W >= 70)
                 {
                     Console.WriteLine("Broke Free!!!");
-                    return;
+                    return false;
                 }
             }
+            return false;
         }
 
         public void Wobbles(int count)
