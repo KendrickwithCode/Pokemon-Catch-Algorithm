@@ -5,7 +5,7 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace ConsoleApp1
 {
-    public class Status
+    public class Status : IStatus
     {
         string[] largeStatuses = {"Frozen", "Asleep"};
         string[] smallStatuses = {"Burned", "Paralyzed"};

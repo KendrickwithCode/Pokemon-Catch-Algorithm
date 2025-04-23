@@ -8,7 +8,7 @@ namespace ConsoleApp1
         {
 
         }
-        public Pokemon(int _id, string _name, int _hp, Status _status)
+        public Pokemon(int _id, string _name, int _hp, IStatus _status)
         {
             ID = _id;
             PokemonName = _name;
@@ -19,7 +19,7 @@ namespace ConsoleApp1
         public int ID { get; set; }
         public string PokemonName { get; set; } = "";
         public int Hitpoints { get; set; } = 0;
-        public Status Status { get; set; }
+        public IStatus Status { get; set; }
         public int CaptureRate { get; set; }
 
         public string DisplayDetails()
