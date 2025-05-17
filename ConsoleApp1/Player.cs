@@ -124,7 +124,7 @@ namespace ConsoleApp1
         {
             for(int i = 1; i < count; i++)
             {
-                    Console.WriteLine(i);
+                    Console.WriteLine(i);   
                     System.Threading.Thread.Sleep(1000);
             }
         }

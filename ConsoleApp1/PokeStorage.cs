@@ -45,8 +45,8 @@ namespace ConsoleApp1
 
                 using (var command = new SqliteCommand(insertQuery, connection))
                 {
-                    command.Parameters.AddWithValue("@Number", pokemon.Number);
-                    command.Parameters.AddWithValue("@Name", pokemon.Name);
+                    command.Parameters.AddWithValue("@Number", pokemon.PokedexNo);
+                    command.Parameters.AddWithValue("@Name", pokemon.PokemonName);
                     command.Parameters.AddWithValue("@HP", pokemon.Hitpoints);
                     command.Parameters.AddWithValue("@Status", pokemon.Status.Name);
 

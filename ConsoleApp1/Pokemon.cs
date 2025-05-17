@@ -17,6 +17,7 @@ namespace ConsoleApp1
         }
 
         public int ID { get; set; }
+        public int PokedexNo {get; set;}
         public string PokemonName { get; set; } = "";
         public int Hitpoints { get; set; } = 0;
         public IStatus Status { get; set; }
@@ -33,9 +34,11 @@ namespace ConsoleApp1
             for (int i = 0; i < count; i++)
             {
                 Random rand = new Random(Seed);
-                string name = Enum.GetName(typeof(PokemonList), rand.Next(1, 152)) ?? "Missingno";
+                var pokemonfromList = (PokemonList)rand.Next(1, 152);
+                string name = Enum.GetName(typeof(PokemonList), pokemonfromList) ?? "Missingno";
                 int hp = rand.Next(0, 200); //Maximum hitpoints is 714, lowering due to difficulty catching.
                 Pokemon pal = new Pokemon(i + 1, name, hp, new Status());
+                pal.PokedexNo = (int)pokemonfromList;
                 pal.CaptureRate = rand.Next(0, 256);
                 palList.Add(pal);
             }
